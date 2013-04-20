@@ -89,7 +89,7 @@ describe "User pages" do
         fill_in "Name",         with: "Example User"
         fill_in "Email",        with: "user@example.com"
         fill_in "Password",     with: "foobar"
-        fill_in "Confirmation", with: "foobar"
+        fill_in "Confirm Password", with: "foobar"
       end
 
       it "should create a user" do
@@ -118,6 +118,8 @@ describe "User pages" do
       it { should have_selector('h1',    text: "Update your profile") }
       it { should have_selector('title', text: "Edit user") }
       it { should have_link('change', href: 'http://gravatar.com/emails') }
+      #it { should have_link('change', target: '_blank') }
+      it {find_link('change')[:target].should == '_blank'}
     end
 
     describe "with invalid information" do
